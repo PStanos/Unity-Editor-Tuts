@@ -2,7 +2,7 @@
 using UnityEditor;
 using System.Collections;
 
-public class LevelSelectEditor : EditorWindow
+public class LevelSelectWindow : EditorWindow
 {
     public const string LEVEL_SELECT_SKIN_PATH = "Assets/GUISkins/LevelSelect.guiskin";
     public const string SCENE_PATH = "Assets/Scenes/";
@@ -12,7 +12,7 @@ public class LevelSelectEditor : EditorWindow
     [MenuItem("Utilities/Level Select")]
     public static void ShowWindow()
     {
-        EditorWindow.GetWindow(typeof(LevelSelectEditor));
+        EditorWindow.GetWindow(typeof(LevelSelectWindow));
     }
 
     void OnGUI()

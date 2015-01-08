@@ -8,9 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62c4e7ad88c8b5c4b8bddf981aacb05e, type: 3}
-  m_Name: SceneDir
+  m_Script: {fileID: 11500000, guid: 86f0b286eccb68c499e45d6afcf46e49, type: 3}
+  m_Name: SceneAsset2
   m_EditorClassIdentifier: 
-  scenes:
-  - {fileID: 11400000, guid: 56a201bd5e011864582f38dfe05735d9, type: 2}
-  - {fileID: 11400000, guid: d97abb54f5163724dbd0ee910f183267, type: 2}
+  sceneName: LevelPath
+  features:
+  - Gizmos
+  - Advanced Inspector

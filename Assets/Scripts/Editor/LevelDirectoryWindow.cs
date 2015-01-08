@@ -2,7 +2,7 @@
 using UnityEditor;
 using System.Collections;
 
-public class LevelDirectoryEditor : EditorWindow
+public class LevelDirectoryWindow : EditorWindow
 {
     public const string DIRECTORY_PATH = "Assets/Scenes/SceneDirectory";
     public const string SCENE_ASSET_PATH = "Assets/Scenes/SceneDirectory/SceneAssets";
@@ -10,7 +10,7 @@ public class LevelDirectoryEditor : EditorWindow
     [MenuItem("Utilities/Level Directory")]
     public static void ShowWindow()
     {
-        EditorWindow newWindow = EditorWindow.GetWindow(typeof(LevelDirectoryEditor));
+        EditorWindow newWindow = EditorWindow.GetWindow(typeof(LevelDirectoryWindow));
         newWindow.title = "Levels";
     }
 
@@ -90,18 +90,20 @@ public class LevelDirectoryEditor : EditorWindow
             {
                 SceneAsset newScene = ScriptableObject.CreateInstance<SceneAsset>();
 
+                string newAssetPath = "";
+
                 if (dir.Scenes.Count > 0)
                 {
-                    newScene.name = "SceneAsset" + (System.Convert.ToInt32((dir.Scenes[dir.Scenes.Count - 1].name.Split('.')[0][dir.Scenes[dir.Scenes.Count - 1].name.Split('.')[0].Length - 1]).ToString()) + 1).ToString() + ".asset";
+                    newAssetPath = SCENE_ASSET_PATH + "/SceneAsset" + (System.Convert.ToInt32((dir.Scenes[dir.Scenes.Count - 1].name.Split('.')[0][dir.Scenes[dir.Scenes.Count - 1].name.Split('.')[0].Length - 1]).ToString()) + 1).ToString() + ".asset";
                 }
                 else
                 {
-                    newScene.name = "SceneAsset1.asset";
+                    newAssetPath = SCENE_ASSET_PATH + "/SceneAsset1.asset";
                 }
 
                 dir.Scenes.Add(newScene);
 
-                AssetDatabase.AddObjectToAsset(newScene, dir);
+                AssetDatabase.CreateAsset(newScene, newAssetPath);
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
             }
@@ -113,7 +115,15 @@ public class LevelDirectoryEditor : EditorWindow
             }
         }
 
-        // Necessary, otherwise data will be lost if window is open on entering play mode
-        EditorUtility.SetDirty(dir);
+        if (dir != null)
+        {
+            // Necessary, otherwise data will be lost if window is open on entering play mode
+            EditorUtility.SetDirty(dir);
+
+            foreach(SceneAsset scene in dir.Scenes)
+            {
+                EditorUtility.SetDirty(scene);
+            }
+        }
     }
 }
