@@ -81,7 +81,7 @@ public class LevelDirectoryEditor : EditorWindow
             if(deleteScene != null)
             {
                 dir.Scenes.Remove(deleteScene);
-                AssetDatabase.DeleteAsset(AssetDatabase.GetAssetPath(deleteScene));
+                DestroyImmediate(deleteScene, true);
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
             }
@@ -90,20 +90,24 @@ public class LevelDirectoryEditor : EditorWindow
             {
                 SceneAsset newScene = ScriptableObject.CreateInstance<SceneAsset>();
 
-                string newAssetPath = "";
-
                 if (dir.Scenes.Count > 0)
                 {
-                    newAssetPath = SCENE_ASSET_PATH + "/SceneAsset" + (System.Convert.ToInt32((dir.Scenes[dir.Scenes.Count - 1].name.Split('.')[0][dir.Scenes[dir.Scenes.Count - 1].name.Split('.')[0].Length - 1]).ToString()) + 1).ToString() + ".asset";
+                    newScene.name = "SceneAsset" + (System.Convert.ToInt32((dir.Scenes[dir.Scenes.Count - 1].name.Split('.')[0][dir.Scenes[dir.Scenes.Count - 1].name.Split('.')[0].Length - 1]).ToString()) + 1).ToString() + ".asset";
                 }
                 else
                 {
-                    newAssetPath = SCENE_ASSET_PATH + "/SceneAsset1.asset";
+                    newScene.name = "SceneAsset1.asset";
                 }
 
                 dir.Scenes.Add(newScene);
 
-                AssetDatabase.CreateAsset(newScene, newAssetPath);
+                AssetDatabase.AddObjectToAsset(newScene, dir);
+                AssetDatabase.SaveAssets();
+                AssetDatabase.Refresh();
+            }
+
+            if (GUILayout.Button("Save Assets"))
+            {
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
             }
