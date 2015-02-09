@@ -53,13 +53,12 @@ public class TileTypeWindow : EditorWindow
 
         int tileNum = 0;
         TileType typeToDelete = null;
-        Rect prevRect = new Rect();
 
         foreach (TileType tileType in _directory.TileTypes)
         {
             GUILayout.Space(TILE_TYPE_PREVIEW_MARGIN);
 
-            Rect newRect = EditorGUILayout.BeginHorizontal(GUILayout.MinHeight(TILE_TYPE_PREVIEW_HEIGHT - EditorGUIUtility.standardVerticalSpacing * 2));
+            EditorGUILayout.BeginHorizontal(GUILayout.MinHeight(TILE_TYPE_PREVIEW_HEIGHT - EditorGUIUtility.standardVerticalSpacing * 2));
 
             if (tileType.TileSprite != null)
             {
@@ -71,7 +70,7 @@ public class TileTypeWindow : EditorWindow
             EditorGUILayout.BeginVertical();
 
             EditorGUIUtility.labelWidth = GUI.skin.label.CalcSize(new GUIContent(tileType.TileSprite == null ? "Tile Sprite" : tileType.TileSprite.name)).x + 5.0f;
-            tileType.TileSprite = (Sprite)EditorGUILayout.ObjectField(tileType.TileSprite == null ? "Tile Sprite" : tileType.TileSprite.name, tileType.TileSprite, typeof(Sprite));
+            tileType.TileSprite = (Sprite)EditorGUILayout.ObjectField(tileType.TileSprite == null ? "Tile Sprite" : tileType.TileSprite.name, tileType.TileSprite, typeof(Sprite), false);
             EditorGUIUtility.labelWidth = 0.0f;
 
             if (GUILayout.Button("Delete Tile Type"))

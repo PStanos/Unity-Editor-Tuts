@@ -20,16 +20,7 @@ public class LevelDirectoryWindow : EditorWindow
 
         if(dir == null)
         {
-            EditorGUILayout.LabelField("No scene directory found!");
-
-            if (GUILayout.Button("Create Scene Directory"))
-            {
-                SceneDirectory newDir = ScriptableObject.CreateInstance<SceneDirectory>();
-
-                AssetDatabase.CreateAsset(newDir, DIRECTORY_PATH + "/SceneDir.asset");
-                AssetDatabase.SaveAssets();
-                AssetDatabase.Refresh();
-            }
+            DrawNewDirectoryButton();
         }
         else
         {
@@ -86,27 +77,7 @@ public class LevelDirectoryWindow : EditorWindow
                 AssetDatabase.Refresh();
             }
 
-            if (GUILayout.Button("Create Scene Asset"))
-            {
-                SceneAsset newScene = ScriptableObject.CreateInstance<SceneAsset>();
-
-                string newAssetPath = "";
-
-                if (dir.Scenes.Count > 0)
-                {
-                    newAssetPath = SCENE_ASSET_PATH + "/SceneAsset" + (System.Convert.ToInt32((dir.Scenes[dir.Scenes.Count - 1].name.Split('.')[0][dir.Scenes[dir.Scenes.Count - 1].name.Split('.')[0].Length - 1]).ToString()) + 1).ToString() + ".asset";
-                }
-                else
-                {
-                    newAssetPath = SCENE_ASSET_PATH + "/SceneAsset1.asset";
-                }
-
-                dir.Scenes.Add(newScene);
-
-                AssetDatabase.CreateAsset(newScene, newAssetPath);
-                AssetDatabase.SaveAssets();
-                AssetDatabase.Refresh();
-            }
+            DrawCreateNewSceneAssetButton(dir);
 
             if (GUILayout.Button("Save Assets"))
             {
@@ -124,6 +95,45 @@ public class LevelDirectoryWindow : EditorWindow
             {
                 EditorUtility.SetDirty(scene);
             }
+        }
+    }
+
+    private void DrawNewDirectoryButton()
+    {
+        EditorGUILayout.LabelField("No scene directory found!");
+
+        if (GUILayout.Button("Create Scene Directory"))
+        {
+            SceneDirectory newDir = ScriptableObject.CreateInstance<SceneDirectory>();
+
+            AssetDatabase.CreateAsset(newDir, DIRECTORY_PATH + "/SceneDir.asset");
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+        }
+    }
+
+    private void DrawCreateNewSceneAssetButton(SceneDirectory dir)
+    {
+        if (GUILayout.Button("Create Scene Asset"))
+        {
+            SceneAsset newScene = ScriptableObject.CreateInstance<SceneAsset>();
+
+            string newAssetPath = "";
+
+            if (dir.Scenes.Count > 0)
+            {
+                newAssetPath = SCENE_ASSET_PATH + "/SceneAsset" + (System.Convert.ToInt32((dir.Scenes[dir.Scenes.Count - 1].name.Split('.')[0][dir.Scenes[dir.Scenes.Count - 1].name.Split('.')[0].Length - 1]).ToString()) + 1).ToString() + ".asset";
+            }
+            else
+            {
+                newAssetPath = SCENE_ASSET_PATH + "/SceneAsset1.asset";
+            }
+
+            dir.Scenes.Add(newScene);
+
+            AssetDatabase.CreateAsset(newScene, newAssetPath);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
         }
     }
 }

@@ -134,6 +134,11 @@ public class Grid : ScriptableObject
         return _gridRows[row][col];
     }
 
+    public GridRow GetRow(int row)
+    {
+        return _gridRows[row];
+    }
+
     public override string ToString()
     {
         return _name;
@@ -144,6 +149,8 @@ public class Grid : ScriptableObject
     {
         if (!keepExistingTiles)
         {
+            DeleteRows();
+
             foreach (GridRow row in _gridRows)
             {
                 foreach (Tile tile in row.Tiles)
@@ -157,6 +164,7 @@ public class Grid : ScriptableObject
             for (int row = 0; row < _width; row++)
             {
                 GridRow newRow = ScriptableObject.CreateInstance<GridRow>();
+                newRow.name = "Row " + (row + 1).ToString();
                 UnityEditor.AssetDatabase.AddObjectToAsset(newRow, this);
 
                 _gridRows.Add(newRow);
@@ -185,6 +193,14 @@ public class Grid : ScriptableObject
         */
 
         UnityEditor.EditorUtility.SetDirty(this);
+    }
+
+    public void DeleteRows()
+    {
+        foreach(GridRow row in _gridRows)
+        {
+            DestroyImmediate(row, true);
+        }
     }
 #endif
 }

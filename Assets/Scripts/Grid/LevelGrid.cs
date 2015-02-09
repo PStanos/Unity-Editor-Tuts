@@ -10,7 +10,6 @@ public class LevelGrid : MonoBehaviour
 #endif
 
     [SerializeField]
-    [HideInInspector]
     private Grid _grid;
 
     public Grid Grid
@@ -48,7 +47,7 @@ public class LevelGrid : MonoBehaviour
 
         for (int col = 0; col < _grid.Width; col++)
         {
-            for (int row = _grid.Height - 1; row > 0; row--)
+            for (int row = _grid.Height - 1; row >= 0; row--)
             {
                 GameObject newTile = (GameObject)GameObject.Instantiate(tilePrefab,
                     new Vector3((col - (int)(_grid.Width / 2)) * tileWidth, (row - (int)(_grid.Height / 2)) * tileHeight, 0.0f),
@@ -83,21 +82,12 @@ public class LevelGrid : MonoBehaviour
 
         if (delete)
         {
+            _grid.DeleteRows();
+
             UnityEditor.AssetDatabase.DeleteAsset(GRID_ASSET_PATH + "/grid-" + _grid.Guid + ".asset");
             UnityEditor.AssetDatabase.SaveAssets();
             UnityEditor.AssetDatabase.Refresh();
             _grid = null;
-        }
-    }
-
-    public void RedrawGrid()
-    {
-        for (int row = 0; row < _grid.Width; row++)
-        {
-            for (int col = 0; col < _grid.Height; col++)
-            {
-                _grid.GetTile(row, col);
-            }
         }
     }
 #endif

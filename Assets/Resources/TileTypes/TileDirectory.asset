@@ -14,9 +14,10 @@ MonoBehaviour:
   _tileTypes:
   - {fileID: 11400002}
   - {fileID: 11400004}
-  - {fileID: 11400006}
   - {fileID: 11400008}
-  - {fileID: 11400010}
+  - {fileID: 11426826}
+  - {fileID: 11413588}
+  - {fileID: 11453356}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28,7 +29,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b225306de11a3134a89c4e7ca91d8ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileSprite: {fileID: 21300000, guid: a42e452e7d4867d428035059f5c77fc1, type: 3}
+  _tileSprite: {fileID: 21300000, guid: 4e73ea1b7ece0104cae5b7c86c6ba78d, type: 3}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40,19 +41,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b225306de11a3134a89c4e7ca91d8ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileSprite: {fileID: 21300000, guid: ce00bc0a5f86d1d46aa7faaf3a5cf6c0, type: 3}
---- !u!114 &11400006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b225306de11a3134a89c4e7ca91d8ea8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tileSprite: {fileID: 21300000, guid: 810ff2b6354d9cb4c8b4a9d1612dc929, type: 3}
+  _tileSprite: {fileID: 21300000, guid: cdd46cbd99ded7d45a5e380254c66218, type: 3}
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,8 +53,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b225306de11a3134a89c4e7ca91d8ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileSprite: {fileID: 21300000, guid: 169a394e00d131d428faae22a108ba3c, type: 3}
---- !u!114 &11400010
+  _tileSprite: {fileID: 21300000, guid: 95115a265a3f78841a437e1e7784dc38, type: 3}
+--- !u!114 &11413588
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -76,4 +65,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b225306de11a3134a89c4e7ca91d8ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tileSprite: {fileID: 21300000, guid: c8fa8b74680225c418d299e126454925, type: 3}
+  _tileSprite: {fileID: 21300000, guid: 637c2670c55e54d459526ebe764add39, type: 3}
+--- !u!114 &11426826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b225306de11a3134a89c4e7ca91d8ea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tileSprite: {fileID: 21300000, guid: 3ee642c2b0abd894c8628451e81db723, type: 3}
+--- !u!114 &11453356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b225306de11a3134a89c4e7ca91d8ea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tileSprite: {fileID: 21300000, guid: 712eadbefc1d5e144a0ec8c7bc8c50c7, type: 3}

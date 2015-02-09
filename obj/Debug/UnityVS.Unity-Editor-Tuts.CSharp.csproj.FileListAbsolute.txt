@@ -1,0 +1,11 @@
+C:\Users\Paul\Documents\Unity-Editor-Tuts\Temp\UnityVS_bin\Debug\Assembly-CSharp.dll
+C:\Users\Paul\Documents\Unity-Editor-Tuts\Temp\UnityVS_bin\Debug\Assembly-CSharp.pdb
+C:\Users\Paul\Documents\Unity-Editor-Tuts\Temp\UnityVS_bin\Debug\UnityEditor.dll
+C:\Users\Paul\Documents\Unity-Editor-Tuts\Temp\UnityVS_bin\Debug\UnityEngine.dll
+C:\Users\Paul\Documents\Unity-Editor-Tuts\Temp\UnityVS_bin\Debug\UnityEngine.UI.dll
+C:\Users\Paul\Documents\Unity-Editor-Tuts\Temp\UnityVS_bin\Debug\UnityEngine.xml
+C:\Users\Paul\Documents\Unity-Editor-Tuts\Temp\UnityVS_bin\Debug\UnityEditor.xml
+C:\Users\Paul\Documents\Unity-Editor-Tuts\Temp\UnityVS_bin\Debug\UnityEngine.UI.xml
+C:\Users\Paul\Documents\Unity-Editor-Tuts\obj\Debug\UnityVS.Unity-Editor-Tuts.CSharp.csprojResolveAssemblyReference.cache
+C:\Users\Paul\Documents\Unity-Editor-Tuts\obj\Debug\Assembly-CSharp.dll
+C:\Users\Paul\Documents\Unity-Editor-Tuts\obj\Debug\Assembly-CSharp.pdb

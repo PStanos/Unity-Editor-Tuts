@@ -35,7 +35,6 @@ public class LevelGridEditor : Editor
         if (GUILayout.Button("Resize Grid"))
         {
             level.Grid.Resize(false);
-            level.RedrawGrid();
         }
 
         GridToolEditor.DrawTools();

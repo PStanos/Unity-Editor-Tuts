@@ -12,6 +12,8 @@ public class GridWindow : EditorWindow
 
     public List<Grid> allGrids;
 
+    private bool _clearSprite = false;
+
     [MenuItem("Utilities/Grid/" + "Grid Editor")]
     static void Init()
     {
@@ -21,7 +23,6 @@ public class GridWindow : EditorWindow
 
         foreach (Grid grid in Resources.LoadAll<Grid>(GRID_PATH))
         {
-            Debug.Log(grid.name);
             if (grid.GetType() == typeof(Grid))
             {
                window.allGrids.Add((Grid)grid);
@@ -43,7 +44,7 @@ public class GridWindow : EditorWindow
 
         Sprite selectedSprite = DrawTileSpriteSelector();
 
-        DrawTileSpriteOrientationSelector();
+        _clearSprite = EditorGUILayout.ToggleLeft("Clear Tile Mode", _clearSprite);
 
         DrawGridTiles(selectedGrid, selectedSprite);
     }
@@ -78,8 +79,6 @@ public class GridWindow : EditorWindow
     {
         gridTileScrollPos = EditorGUILayout.BeginScrollView(gridTileScrollPos);
 
-        //Vector2 startPos = new Vector2(GUILayoutUtility.GetLastRect().xMin, GUILayoutUtility.GetLastRect().yMax);
-
         for (int col = 0; col < grid.Width; col++)
         {
             for (int row = 0; row < grid.Height; row++)
@@ -88,27 +87,40 @@ public class GridWindow : EditorWindow
 
                 Rect newPos = new Rect(TILE_DIM * col, TILE_DIM * (grid.Height - 1 - row), TILE_DIM, TILE_DIM);
 
-                EditorGUIUtility.RotateAroundPivot(((int)grid.GetTile(row, col).TileOrientation) * 90.0f, new Vector2(newPos.xMin + TILE_DIM / 2.0f, newPos.yMin + TILE_DIM / 2.0f));
-                //GUIUtility.RotateAroundPivot(((int)grid.GetTile(row, col).TileOrientation) * 90.0f, new Vector2(newPos.xMin + TILE_DIM / 2.0f, newPos.yMin + TILE_DIM / 2.0f));
                 if (grid.GetTile(row, col).Sprite != null)
                 {
                     if (GUI.Button(newPos, grid.GetTile(row, col).Sprite.texture))
                     {
-                        grid.GetTile(row, col).Sprite = spriteIfChanged;
-                        grid.GetTile(row, col).TileOrientation = _selectedOrientation;
+                        if (_clearSprite)
+                        {
+                            grid.GetTile(row, col).Sprite = null;
+                        }
+                        else
+                        {
+                            grid.GetTile(row, col).Sprite = spriteIfChanged;
+                            grid.GetTile(row, col).TileOrientation = _selectedOrientation;
+                        }
+
+                        EditorUtility.SetDirty(grid.GetTile(row, col));
+                        EditorUtility.SetDirty(grid.GetRow(row));
                     }
                 }
                 else
                 {
                     if (GUI.Button(newPos, ""))
                     {
-                        grid.GetTile(row, col).Sprite = spriteIfChanged;
-                        grid.GetTile(row, col).TileOrientation = _selectedOrientation;
+                        if (!_clearSprite)
+                        {
+                            grid.GetTile(row, col).Sprite = spriteIfChanged;
+                            grid.GetTile(row, col).TileOrientation = _selectedOrientation;
+
+                            EditorUtility.SetDirty(grid.GetTile(row, col));
+                            EditorUtility.SetDirty(grid.GetRow(row));
+                        }
                     }
                 }
 
                 GUI.matrix = origMatrix;
-                //EditorGUIUtility.RotateAroundPivot(((int)grid.GetTile(row, col).TileOrientation) * -90.0f, new Vector2(newPos.xMin + TILE_DIM / 2.0f, newPos.yMin + TILE_DIM / 2.0f));
             }
         }
 

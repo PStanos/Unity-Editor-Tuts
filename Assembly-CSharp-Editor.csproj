@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\Editor\BoundaryCheckerEditor.cs" />
      <Compile Include="Assets\Scripts\Editor\CubeMakerEditor.cs" />
      <Compile Include="Assets\Scripts\Editor\CustomEditorUtils.cs" />
+     <Compile Include="Assets\Scripts\Editor\ErrorTest.cs" />
      <Compile Include="Assets\Scripts\Editor\Grid\GridToolEditor.cs" />
      <Compile Include="Assets\Scripts\Editor\Grid\GridWindow.cs" />
      <Compile Include="Assets\Scripts\Editor\Grid\LevelGridEditor.cs" />
@@ -60,6 +61,15 @@
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>C:/Program Files (x86)/Unity46Full/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/Editor/UnityEditor.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
+ <HintPath>C:/Users/Paul/Documents/Unity-Editor-Tuts/Assets/UnityVS/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
+ </Reference>
+ <Reference Include="SyntaxTree.VisualStudio.Unity.Messaging">
+ <HintPath>C:/Users/Paul/Documents/Unity-Editor-Tuts/Assets/UnityVS/Editor/SyntaxTree.VisualStudio.Unity.Messaging.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityVS.VersionSpecific">
+ <HintPath>C:/Users/Paul/Documents/Unity-Editor-Tuts/Assets/UnityVS/Editor/UnityVS.VersionSpecific.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files (x86)/Unity46Full/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
