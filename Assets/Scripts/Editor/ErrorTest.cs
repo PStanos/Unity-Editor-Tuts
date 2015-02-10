@@ -4,7 +4,7 @@ using System.Collections;
 
 public class ErrorTest : EditorWindow
 {
-    [MenuItem("Tools/Data Storage/Animals")]
+    [MenuItem("Utilities/Error Test")]
     static void Init()
     {
         ErrorTest window = (ErrorTest)EditorWindow.GetWindow(typeof(ErrorTest));

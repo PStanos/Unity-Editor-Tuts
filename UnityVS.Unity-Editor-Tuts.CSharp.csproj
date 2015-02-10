@@ -67,6 +67,9 @@
     <Compile Include="Assets\Scripts\Grid\TileType.cs" />
     <Compile Include="Assets\Scripts\Scene\SceneAsset.cs" />
     <Compile Include="Assets\Scripts\Scene\SceneDirectory.cs" />
+    <Compile Include="Assets\Tetris\Scripts\TetrisBoard.cs" />
+    <Compile Include="Assets\Tetris\Scripts\TetrisShape.cs" />
+    <Compile Include="Assets\Tetris\Scripts\TetrisTile.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>
